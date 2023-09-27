@@ -2,6 +2,8 @@ import LetsPlay from './components/LetsPlay';
 import './App.css';
 import GreetUser from './components/GreetUser';
 import DisplayWord from './components/DisplayWord';
+import Result from './components/Result';
+import EndGame from './components/EndGame';
 
 function App() {
   return (
@@ -11,6 +13,10 @@ function App() {
       <LetsPlay />
       <GreetUser />
       <DisplayWord word="cats"/>
+      <Result />
+      <button>IKEA</button>
+      <button>CHEESE</button>
+      <EndGame />
     </div>
   );
 }
