@@ -6,7 +6,12 @@ import Result from './components/Result';
 import EndGame from './components/EndGame';
 
 function App() {
-  return (
+  const clickHandler = () => {
+    console.log('Clicked!');
+  };
+
+
+   return (
     <div className="App">
       <h1 className="app-header">Ikea or Cheese</h1>
       <LetsPlay />
@@ -14,7 +19,7 @@ function App() {
       <DisplayWord word="cats"/>
       <Result />
       <button>IKEA</button>
-      <button onClick={() => {console.log('clicked!')}}>CHEESE</button>
+      <button onClick={clickHandler}>CHEESE</button>
       <EndGame />
     </div>
   );
