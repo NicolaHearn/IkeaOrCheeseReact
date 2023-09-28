@@ -8,14 +8,13 @@ import EndGame from './components/EndGame';
 function App() {
   return (
     <div className="App">
-      <h1>Test</h1>
       <h1 className="app-header">Ikea or Cheese</h1>
       <LetsPlay />
       <GreetUser />
       <DisplayWord word="cats"/>
       <Result />
       <button>IKEA</button>
-      <button>CHEESE</button>
+      <button onClick={() => {console.log('clicked!')}}>CHEESE</button>
       <EndGame />
     </div>
   );
