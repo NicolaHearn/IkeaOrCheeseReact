@@ -1,7 +1,7 @@
-function greetUser() {
+function greetUser(props) {
     return(
         <div>
-            <p>Hello player, type "i" for ikea or "c" for cheese</p>
+            <p>Hello {props.name}, type "i" for ikea or "c" for cheese</p>
         </div>
     )
 }

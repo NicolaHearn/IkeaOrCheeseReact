@@ -21,7 +21,6 @@ function App() {
     <div className="App">
       <h1 className="app-header">{title}</h1>
       <LetsPlay />
-      <GreetUser />
       <DisplayWord word="cats"/>
       <Result />
       <button>IKEA</button>
