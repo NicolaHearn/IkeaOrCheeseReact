@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import GreetUser from './GreetUser';
-function LetsPlay() {
+function LetsPlay(props) {
    
     const [enteredName, setEnteredName] = useState('');
-    const [greetUser, setGreetUser] = useState('')
+    
 
     const playerNameChangeHandler = (event) => {
         setEnteredName(event.target.value)
@@ -14,7 +14,8 @@ function LetsPlay() {
     const submitHandler = (event) => {
         event.preventDefault();
         player = enteredName;
-        setGreetUser(<GreetUser name={player} />)
+        
+        props.onSubmitName(player)
         setEnteredName('');
     }
 
@@ -26,7 +27,7 @@ function LetsPlay() {
                 <input type="text" id="player" value={enteredName} name="player" onChange={playerNameChangeHandler}/>
                 <input type="submit" value="ok"/>
             </form>
-            <div>{greetUser}</div>
+            <div></div>
         </div>
     )
 }
