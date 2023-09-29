@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import LetsPlay from './components/LetsPlay';
 import './App.css';
 import GreetUser from './components/GreetUser';
@@ -6,14 +7,19 @@ import Result from './components/Result';
 import EndGame from './components/EndGame';
 
 function App() {
+
+  let heading = "Ikea or Cheese"
+
+  const [title, setTitle] = useState(heading);
+
   const clickHandler = () => {
-    console.log('Clicked!');
-  };
-
-
+    setTitle('Updated!');
+    console.log(title);
+ }
+ 
    return (
     <div className="App">
-      <h1 className="app-header">Ikea or Cheese</h1>
+      <h1 className="app-header">{title}</h1>
       <LetsPlay />
       <GreetUser />
       <DisplayWord word="cats"/>
