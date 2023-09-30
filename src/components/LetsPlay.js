@@ -9,7 +9,7 @@ function LetsPlay(props) {
   };
 
   let player;
-  let game = "new Game";
+  let game = <Game />;
 
   const submitHandler = (event) => {
     event.preventDefault();

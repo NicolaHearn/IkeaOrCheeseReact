@@ -49,6 +49,8 @@ function Game() {
       return "game over, you scored: " + this.score;
     }
   }
+
+  return <div>I am a new game</div>;
 }
 
 export default Game;
