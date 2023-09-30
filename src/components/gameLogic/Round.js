@@ -25,7 +25,8 @@ function Round(props) {
     }
   }
   const round = new Round();
+  const newWord = "funny";
 
-  return <div></div>;
+  return <div>Word this round {newWord}</div>;
 }
 export default Round;

@@ -12,18 +12,18 @@ function Game() {
 
     startRound() {
       // let result = false;
-      this.round = new Round();
-      this.wordThisRound = this.round.randomWord();
+      this.round = <Round />;
+      this.wordThisRound = <Round />;
 
-      while (this.previousWords.includes(this.wordThisRound)) {
-        this.wordThisRound = this.round.randomWord();
-        console.log("new word" + this.wordThisRound);
-      }
+      //   while (this.previousWords.includes(this.wordThisRound)) {
+      //     this.wordThisRound = this.round.randomWord();
+      //     console.log("new word" + this.wordThisRound);
+      //   }
 
-      this.previousWords.push(this.wordThisRound);
-      this.rounds++;
-      console.log(this.previousWords);
-      return `${this.wordThisRound}`;
+      //   this.previousWords.push(this.wordThisRound);
+      //   this.rounds++;
+      //   console.log(this.previousWords);
+      //   return `${this.wordThisRound}`;
     }
 
     checkUserInput(userInput) {
@@ -50,7 +50,10 @@ function Game() {
     }
   }
 
-  return <div>I am a new game</div>;
+  const game = new NewGame();
+  const round = <Round />;
+
+  return <div>I am a new game {round}</div>;
 }
 
 export default Game;
