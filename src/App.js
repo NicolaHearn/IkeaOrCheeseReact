@@ -23,7 +23,8 @@ function App() {
 
   const newPlayerHandler = (enteredName, game) => {
     setGreetUser(<GreetUser name={enteredName} />);
-    console.log(enteredName + "  " + game);
+    setNewGame(game);
+    console.log(enteredName + "  " + newGame);
   };
 
   return (
