@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import GreetUser from "./GreetUser";
+import Game from "./gameLogic/Game";
+
 function LetsPlay(props) {
   const [enteredName, setEnteredName] = useState("");
 
