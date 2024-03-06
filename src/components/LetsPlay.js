@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import GreetUser from "./GreetUser";
+
 function LetsPlay(props) {
   const [enteredName, setEnteredName] = useState("");
 
@@ -18,7 +18,7 @@ function LetsPlay(props) {
   };
 
   return (
-    <div data-testid="startGame" className="mt-4">
+    <div data-testid="startGame">
       <form onSubmit={submitHandler}>
         <label className="my-2" htmlFor="player">
           Let's play ikea or cheese, please enter your name to start the game:{" "}
@@ -29,6 +29,7 @@ function LetsPlay(props) {
           id="player"
           value={enteredName}
           name="player"
+          placeholder="Your name here"
           onChange={playerNameChangeHandler}
         />
         <input
