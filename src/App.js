@@ -26,8 +26,8 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <h1 className="app-header font-bold bg-white">Ikea or Cheese</h1>
+    <div className="App bg-white mx-auto w-6/12 flex flex-col justify-center mt-32 h-3/5">
+      <h1 className="font-bold ">Ikea or Cheese</h1>
       <LetsPlay onSubmitName={newPlayerHandler} />
       <div>{greetUser}</div>
       <DisplayWord on />
