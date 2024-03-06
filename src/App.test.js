@@ -1,4 +1,5 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
+import "@testing-library/jest-dom";
 import App from "./App";
 
 describe("App component", () => {
@@ -16,5 +17,19 @@ describe("App component", () => {
     );
     expect(inputElement).toBeInTheDocument();
     expect(inputElement.tagName).toBe("INPUT");
+  });
+
+  it("updates startGame state upon new player name submission", async () => {
+    render(<App />);
+
+    const nameInput = screen.getByPlaceholderText("Your name here");
+    const submitButton = screen.getByRole("button", { name: "ok" });
+
+    fireEvent.change(nameInput, { target: { value: "John Doe" } });
+    fireEvent.click(submitButton);
+
+    const greetingElement = await screen.findByText(/john doe/i);
+
+    expect(greetingElement).toBeInTheDocument();
   });
 });
