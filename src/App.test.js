@@ -32,4 +32,15 @@ describe("App component", () => {
 
     expect(greetingElement).toBeInTheDocument();
   });
+
+  it("should display round and score as zero at the start of the game", () => {
+    // Render the GameStatus component with initial props
+    render(<App />);
+
+    // Check if the round is correctly displayed
+    expect(screen.getByText(/Round: 0/i)).toBeInTheDocument();
+
+    // Check if the score is correctly displayed
+    expect(screen.getByText(/Score: 0/i)).toBeInTheDocument();
+  });
 });
