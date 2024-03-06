@@ -1,5 +1,4 @@
 import Words from "./Words";
-import Round from "./Round";
 
 function Random() {
   const words = new Words();
