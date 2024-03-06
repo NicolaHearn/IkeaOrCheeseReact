@@ -1,22 +1,19 @@
 import Words from "./Words";
 import Round from "./Round";
 
-function Random(props) {
-
-class Random {
+function Random() {
+  class Random {
     random() {
-        // const words = new Words();
-        
-        const max = props.allWords.length-1;
-        const index = Math.floor(Math.random() * max);
-        return props.allWords[index];
-      }
-}
-const randomWord = new Random();
+      const words = new Words();
 
-return(
-    <Round randomWord={randomWord.random()} testWord="testWord"/>   
-)
+      const max = words.allWords.length - 1;
+      const index = Math.floor(Math.random() * max);
+      return words.allWords[index];
+    }
+  }
+  const randomWord = new Random();
+
+  return <p>{randomWord}</p>;
 }
 
-export default Random
+export default Random;

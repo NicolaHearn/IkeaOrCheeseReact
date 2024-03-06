@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import LetsPlay from "./components/LetsPlay";
 import "./App.css";
 import GreetUser from "./components/GreetUser";
-import DisplayWord from "./components/DisplayWord";
+import Random from "./components/Random";
 import Result from "./components/Result";
 import EndGame from "./components/EndGame";
 
 function App() {
   const newPlayerHandler = (enteredName) => {
     setStartGame(<GreetUser name={enteredName} />);
+    setRandomWord(<Random />);
     console.log(enteredName);
   };
 
@@ -18,6 +19,7 @@ function App() {
   );
   const [score, setScore] = useState(0);
   const [round, setRound] = useState(0);
+  const [randomWord, setRandomWord] = useState();
 
   const cheeseHandler = () => {
     setChoice("CHEESE");
@@ -42,7 +44,7 @@ function App() {
       </div>
       <div className="my-4">{startGame}</div>
 
-      <DisplayWord />
+      <p>{randomWord}</p>
       <p>{choice}</p>
       <Result>{choice}</Result>
       <button onClick={ikeaHandler}>IKEA</button>
