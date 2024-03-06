@@ -16,6 +16,8 @@ function App() {
   const [startGame, setStartGame] = useState(
     <LetsPlay onSubmitName={newPlayerHandler} />
   );
+  const [score, setScore] = useState(0);
+  const [round, setRound] = useState(0);
 
   const cheeseHandler = () => {
     setChoice("CHEESE");
@@ -30,9 +32,17 @@ function App() {
   return (
     <div className="App bg-white mx-auto p-12 w-6/12 flex flex-col justify-start items-center mt-32 h-3/5 rounded-xl shadow-lg min-w-96">
       <h1 className="font-bold flex justify-center ">IKEA OR CHEESE</h1>
-
+      <div className="mt-4 flex justify-around w-full">
+        <h2 className="bg-blue-700 p-4 text-white font-bold rounded">
+          Round: {round}
+        </h2>
+        <h2 className="bg-blue-700 p-4 text-white font-bold rounded">
+          Score: {score}
+        </h2>
+      </div>
       <div className="my-4">{startGame}</div>
-      <DisplayWord on />
+
+      <DisplayWord />
       <p>{choice}</p>
       <Result>{choice}</Result>
       <button onClick={ikeaHandler}>IKEA</button>
