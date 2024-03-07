@@ -12,9 +12,10 @@ class Round {
   // }
 
   winOrLose(questionWord, currentGuess) {
-    return (currentGuess === "i" &&
+    return (currentGuess === "You chose IKEA" &&
       this.words.ikeaWords.includes(questionWord)) ||
-      (currentGuess === "c" && this.words.cheeseWords.includes(questionWord))
+      (currentGuess === "You chose CHEESE" &&
+        this.words.cheeseWords.includes(questionWord))
       ? "Correct!"
       : "Incorrect!";
   }
