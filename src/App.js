@@ -6,7 +6,6 @@ import Random from "./components/Random";
 import Cheese from "./images/Cheese.jpg";
 import IKEA from "./images/IKEA.jpg";
 import Result from "./components/Result";
-import EndGame from "./components/EndGame";
 
 function App() {
   const newPlayerHandler = (enteredName) => {
@@ -21,16 +20,15 @@ function App() {
   );
   const [score, setScore] = useState(0);
   const [round, setRound] = useState(0);
+  const [result, setResult] = useState("");
   const [randomWord, setRandomWord] = useState();
 
   const cheeseHandler = () => {
-    setChoice("CHEESE");
-    console.log(choice);
+    setChoice("You chose CHEESE...");
   };
 
   const ikeaHandler = () => {
-    setChoice("IKEA");
-    console.log(choice);
+    setChoice("You chose IKEA...");
   };
 
   return (
@@ -45,9 +43,10 @@ function App() {
         </h2>
       </div>
       <div className="my-4">{startGame}</div>
-
-      <p>{randomWord}</p>
-      <p>{choice}</p>
+      <div className="game-area">
+        <p>{randomWord}</p>
+        <p>{choice}</p>
+      </div>
       <div className="absolute bottom-0 my-12 flex justify-center space-x-2 w-full">
         <button
           onClick={ikeaHandler}
@@ -56,15 +55,10 @@ function App() {
           <img src={IKEA} alt="ikea building" class="w-auto h-28"></img>
         </button>
         <button
-          onClick={ikeaHandler}
+          onClick={cheeseHandler}
           class="bg-transparent border-none focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
         >
-          <img
-            onClick={cheeseHandler}
-            src={Cheese}
-            alt="cheese"
-            class="w-auto h-28"
-          ></img>
+          <img src={Cheese} alt="cheese" class="w-auto h-28"></img>
         </button>
       </div>
     </div>
