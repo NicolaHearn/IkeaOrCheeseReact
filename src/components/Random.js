@@ -7,7 +7,7 @@ function Random() {
   const index = Math.floor(Math.random() * max);
   const randomWord = words.allWords[index];
 
-  return <p>{randomWord.charAt(0).toUpperCase() + randomWord.slice(1)}</p>;
+  return <p>{randomWord.charAt(0) + randomWord.slice(1)}</p>;
 }
 
 export default Random;

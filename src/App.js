@@ -6,29 +6,68 @@ import Random from "./components/Random";
 import Cheese from "./images/Cheese.jpg";
 import IKEA from "./images/IKEA.jpg";
 import Result from "./components/Result";
+import RandomWord from "./gameLogic/random";
 
 function App() {
   const newPlayerHandler = (enteredName) => {
-    setStartGame(<GreetUser name={enteredName} />);
-    setRandomWord(<Random />);
+    setPlayerName(enteredName);
+    if (enteredName) {
+      playRound();
+    }
+
     console.log(enteredName);
   };
 
+  const [playerName, setPlayerName] = useState("");
   const [choice, setChoice] = useState("");
-  const [startGame, setStartGame] = useState(
-    <LetsPlay onSubmitName={newPlayerHandler} />
-  );
+
   const [score, setScore] = useState(0);
   const [round, setRound] = useState(0);
   const [result, setResult] = useState("");
-  const [randomWord, setRandomWord] = useState();
+  const [resultData, setResultData] = useState({
+    randomWord: "",
+    userGuess: "",
+  });
+  const [randomWord, setRandomWord] = useState("");
+  const [gameArea, setGameArea] = useState([]);
+  const [gameAreaVisible, setGameAreaVisible] = useState(false);
 
   const cheeseHandler = () => {
-    setChoice("You chose CHEESE...");
+    const newChoice = "You chose CHEESE";
+    setChoice(newChoice);
+    setGameArea([...gameArea, newChoice]);
+    console.log(`choice set in ikea handler: ${choice}`);
+    setTimeout(() => {
+      resultHandler(newChoice);
+    }, 3000);
   };
 
   const ikeaHandler = () => {
-    setChoice("You chose IKEA...");
+    const newChoice = "You chose IKEA";
+    setChoice(newChoice);
+    setGameArea([...gameArea, newChoice]);
+    console.log(`choice set in ikea handler: ${choice}`);
+    setTimeout(() => {
+      resultHandler(newChoice);
+    }, 3000);
+  };
+
+  const playRound = () => {
+    const newRandom = new RandomWord();
+    setRandomWord(newRandom.random());
+    setGameArea([...gameArea, newRandom.random()]);
+    setRound((prevRound) => prevRound + 1);
+    setGameAreaVisible(true);
+  };
+
+  const resultHandler = (newChoice) => {
+    console.log(`random word: ${randomWord}, userGuess: ${newChoice}`);
+    setResultData({ randomWord: randomWord, userGuess: newChoice });
+
+    if (result === "Correct!") {
+      setScore((prevResult) => prevResult + 1);
+    }
+    setGameArea([...gameArea, result]);
   };
 
   return (
@@ -42,23 +81,36 @@ function App() {
           Score: {score}
         </h2>
       </div>
-      <div className="my-4">{startGame}</div>
-      <div className="game-area">
-        <p>{randomWord}</p>
-        <p>{choice}</p>
+      <div className="my-4">
+        {playerName ? (
+          <GreetUser name={playerName} />
+        ) : (
+          <LetsPlay onSubmitName={newPlayerHandler} />
+        )}
       </div>
+      <div className={`game-area ${gameAreaVisible ? "" : "invisible"}`}>
+        {gameArea.map((item, index) => (
+          <p key={index}>{item}</p>
+        ))}
+      </div>
+      {resultData.randomWord && resultData.userGuess && (
+        <Result
+          randomWord={resultData.randomWord}
+          userGuess={resultData.userGuess}
+        />
+      )}
       <div className="absolute bottom-0 my-12 flex justify-center space-x-2 w-full">
         <button
           onClick={ikeaHandler}
-          class="bg-transparent border-none focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+          className="bg-transparent border-none focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
         >
-          <img src={IKEA} alt="ikea building" class="w-auto h-28"></img>
+          <img src={IKEA} alt="ikea building" className="w-auto h-28"></img>
         </button>
         <button
           onClick={cheeseHandler}
-          class="bg-transparent border-none focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+          className="bg-transparent border-none focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
         >
-          <img src={Cheese} alt="cheese" class="w-auto h-28"></img>
+          <img src={Cheese} alt="cheese" className="w-auto h-28"></img>
         </button>
       </div>
     </div>
