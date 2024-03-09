@@ -3,7 +3,7 @@ import LetsPlay from "./components/LetsPlay";
 import GreetUser from "./components/GreetUser";
 import Cheese from "./images/Cheese.jpg";
 import IKEA from "./images/IKEA.jpg";
-import RandomWord from "./gameLogic/random";
+import Random from "./gameLogic/random";
 import Words from "./gameLogic/words";
 
 function App() {
@@ -41,7 +41,7 @@ function App() {
   };
 
   const playRound = () => {
-    const newRandom = new RandomWord();
+    const newRandom = new Random();
     const wordToGuess = newRandom.random();
     setRandomWord(wordToGuess);
     setGameArea(gameArea.pop());
