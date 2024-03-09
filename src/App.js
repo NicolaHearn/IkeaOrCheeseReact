@@ -7,6 +7,7 @@ import Cheese from "./images/Cheese.jpg";
 import IKEA from "./images/IKEA.jpg";
 import Result from "./components/Result";
 import RandomWord from "./gameLogic/random";
+import Words from "./gameLogic/words";
 
 function App() {
   const newPlayerHandler = (enteredName) => {
@@ -54,20 +55,34 @@ function App() {
 
   const playRound = () => {
     const newRandom = new RandomWord();
-    setRandomWord(newRandom.random());
-    setGameArea([...gameArea, newRandom.random()]);
+    const wordToGuess = newRandom.random();
+    setRandomWord(wordToGuess);
+    console.log(`random word in playround: ${randomWord}`);
+    setGameArea([...gameArea, wordToGuess]);
     setRound((prevRound) => prevRound + 1);
     setGameAreaVisible(true);
   };
 
   const resultHandler = (newChoice) => {
     console.log(`random word: ${randomWord}, userGuess: ${newChoice}`);
-    setResultData({ randomWord: randomWord, userGuess: newChoice });
+    // setResultData({ randomWord: randomWord, userGuess: newChoice });
 
-    if (result === "Correct!") {
-      setScore((prevResult) => prevResult + 1);
-    }
+    const words = new Words();
+    const winOrLose = (questionWord, currentGuess) => {
+      console.log(`winOrLose: ${questionWord}, ${currentGuess}`);
+      return (currentGuess === "You chose IKEA" &&
+        words.ikeaWords.includes(questionWord)) ||
+        (currentGuess === "You chose CHEESE" &&
+          words.cheeseWords.includes(questionWord))
+        ? "Correct!"
+        : "Incorrect!";
+    };
+    const result = winOrLose(randomWord, newChoice);
     setGameArea([...gameArea, result]);
+    if (result === "Correct!") {
+      // setScore((prevResult) => prevResult + 1);
+      setScore((prevScore) => prevScore + 1);
+    }
   };
 
   return (
