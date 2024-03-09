@@ -2,10 +2,8 @@ import React, { useState } from "react";
 import LetsPlay from "./components/LetsPlay";
 import "./App.css";
 import GreetUser from "./components/GreetUser";
-import Random from "./components/Random";
 import Cheese from "./images/Cheese.jpg";
 import IKEA from "./images/IKEA.jpg";
-import Result from "./components/Result";
 import RandomWord from "./gameLogic/random";
 import Words from "./gameLogic/words";
 
@@ -21,17 +19,13 @@ function App() {
 
   const [playerName, setPlayerName] = useState("");
   const [choice, setChoice] = useState("");
-
   const [score, setScore] = useState(0);
   const [round, setRound] = useState(0);
-  const [result, setResult] = useState("");
-  const [resultData, setResultData] = useState({
-    randomWord: "",
-    userGuess: "",
-  });
   const [randomWord, setRandomWord] = useState("");
   const [gameArea, setGameArea] = useState([]);
   const [gameAreaVisible, setGameAreaVisible] = useState(false);
+  const [ikeaButtonDisabled, setIkeaButtonDisabled] = useState(false);
+  const [cheeseButtonDisabled, setCheeseButtonDisabled] = useState(false);
 
   const cheeseHandler = () => {
     const newChoice = "You chose CHEESE";
@@ -57,7 +51,8 @@ function App() {
     const newRandom = new RandomWord();
     const wordToGuess = newRandom.random();
     setRandomWord(wordToGuess);
-    console.log(`random word in playround: ${randomWord}`);
+    // console.log(`random word in playround: ${randomWord}`);
+    setGameArea(gameArea.pop());
     setGameArea([...gameArea, wordToGuess]);
     setRound((prevRound) => prevRound + 1);
     setGameAreaVisible(true);
@@ -83,6 +78,14 @@ function App() {
       // setScore((prevResult) => prevResult + 1);
       setScore((prevScore) => prevScore + 1);
     }
+    setTimeout(() => {
+      if (round <= 9) {
+        playRound();
+      } else {
+        const endGame = `Game over, you scored ${score}/10`;
+        setGameArea([endGame]);
+      }
+    }, 2000);
   };
 
   return (
@@ -105,15 +108,11 @@ function App() {
       </div>
       <div className={`game-area ${gameAreaVisible ? "" : "invisible"}`}>
         {gameArea.map((item, index) => (
-          <p key={index}>{item}</p>
+          <p className="pt-4" key={index}>
+            {item}
+          </p>
         ))}
       </div>
-      {resultData.randomWord && resultData.userGuess && (
-        <Result
-          randomWord={resultData.randomWord}
-          userGuess={resultData.userGuess}
-        />
-      )}
       <div className="absolute bottom-0 my-12 flex justify-center space-x-2 w-full">
         <button
           onClick={ikeaHandler}
