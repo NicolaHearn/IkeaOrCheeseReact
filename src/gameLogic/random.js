@@ -1,4 +1,4 @@
-const Words = require("./words");
+import Words from "./words";
 
 class Random {
   random() {

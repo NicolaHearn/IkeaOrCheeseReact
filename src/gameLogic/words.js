@@ -10,26 +10,25 @@ class Words {
       "frotorp",
       "tarno",
       "kuggo",
-      "raskog"
+      "raskog",
     ];
     this.cheeseWords = [
-        "gammalost",
-        "kaffeost",
-        "vasterbottenost",
-        "potkase",
-        "tynjetaler",
-        "bergkase",
-        "lighvan",
-        "lajta",
-        "hajdu",
-        "mesesajt",
-        "balaton",
-        "alkmaar",
-        "kashkaval"
-      ];
+      "gammalost",
+      "kaffeost",
+      "vasterbottenost",
+      "potkase",
+      "tynjetaler",
+      "bergkase",
+      "lighvan",
+      "lajta",
+      "hajdu",
+      "mesesajt",
+      "balaton",
+      "alkmaar",
+      "kashkaval",
+    ];
     this.allWords = this.ikeaWords.concat(this.cheeseWords);
-  
   }
 }
 
-module.exports = Words;
+export default Words;
