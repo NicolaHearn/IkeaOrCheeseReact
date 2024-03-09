@@ -11,7 +11,10 @@ import RandomWord from "./gameLogic/random";
 function App() {
   const newPlayerHandler = (enteredName) => {
     setPlayerName(enteredName);
-    playRound();
+    if (enteredName) {
+      playRound();
+    }
+
     console.log(enteredName);
   };
 

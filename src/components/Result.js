@@ -14,7 +14,7 @@ function Result(props) {
     return (currentGuess === "You chose IKEA" &&
       words.ikeaWords.includes(questionWord)) ||
       (currentGuess === "You chose CHEESE" &&
-        this.words.cheeseWords.includes(questionWord))
+        words.cheeseWords.includes(questionWord))
       ? "Correct!"
       : "Incorrect!";
   };
