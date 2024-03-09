@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import LetsPlay from "./components/LetsPlay";
-import "./App.css";
 import GreetUser from "./components/GreetUser";
 import Cheese from "./images/Cheese.jpg";
 import IKEA from "./images/IKEA.jpg";
